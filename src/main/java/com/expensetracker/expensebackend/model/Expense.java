@@ -4,6 +4,8 @@ package com.expensetracker.expensebackend.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Expense {
 
@@ -13,6 +15,7 @@ public class Expense {
 
     private String title;
     private double amount;
+      @JsonFormat(pattern = "yyyy-MM-dd") 
     private LocalDate date;
 
     // Constructors

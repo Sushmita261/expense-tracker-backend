@@ -5,6 +5,7 @@ package com.expensetracker.expensebackend.controller;
 import com.expensetracker.expensebackend.model.Expense;
 import com.expensetracker.expensebackend.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,5 +34,11 @@ public class ExpenseController {
     public void deleteExpense(@PathVariable Long id) {
         expenseService.deleteExpense(id);
     }
+    @PutMapping("/{id}")
+public Expense updateExpense(@PathVariable Long id, @RequestBody Expense updatedExpense) {
+    return expenseService.updateExpense(id, updatedExpense);
+}
+
+
 }
 
