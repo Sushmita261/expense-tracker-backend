@@ -3,7 +3,7 @@ package com.expensetracker.expensebackend.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-
+import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -12,9 +12,11 @@ public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+@NotBlank(message = "Title is mandatory")
     private String title;
+     @Positive(message = "Amount must be greater than 0")
     private double amount;
+     @NotNull(message = "Date is required")
       @JsonFormat(pattern = "yyyy-MM-dd") 
     private LocalDate date;
 

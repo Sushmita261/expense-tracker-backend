@@ -4,9 +4,14 @@ package com.expensetracker.expensebackend.controller;
 
 import com.expensetracker.expensebackend.model.Expense;
 import com.expensetracker.expensebackend.service.ExpenseService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+
 
 import java.util.List;
 
@@ -25,7 +30,7 @@ public class ExpenseController {
 
     // POST a new expense
     @PostMapping
-    public Expense addExpense(@RequestBody Expense expense) {
+    public Expense addExpense(@Valid @RequestBody Expense expense) {
         return expenseService.saveExpense(expense);
     }
 
@@ -35,7 +40,7 @@ public class ExpenseController {
         expenseService.deleteExpense(id);
     }
     @PutMapping("/{id}")
-public Expense updateExpense(@PathVariable Long id, @RequestBody Expense updatedExpense) {
+public Expense updateExpense(@PathVariable Long id, @Valid @RequestBody Expense updatedExpense) {
     return expenseService.updateExpense(id, updatedExpense);
 }
 
